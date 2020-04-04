@@ -1,5 +1,6 @@
 import { createStore } from "redux";
-
+import { persistStore, persistReducer } from "redux-persist";
+import createWebStorage from "../../dist/index";
 const TOGGLE_ACTION_TYPE = "TOGGLE_ACTION_TYPE" as const;
 
 export const toggle = () => {
@@ -30,4 +31,19 @@ const reducer = (state: State = initialState, action: ActionType) => {
   }
 };
 
-export const configureStore = () => createStore(reducer);
+const storage = createWebStorage();
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+export const configureStore = () => {
+  const store = createStore(persistedReducer);
+  return {
+    store,
+    persistor: persistStore(store),
+  };
+};
