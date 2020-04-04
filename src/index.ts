@@ -1,25 +1,16 @@
+import storage from "kv-storage-polyfill";
+
 export default function createWebStorage(type: string) {
   return {
-    getItem: (key: string): Promise<string> => {
-      return new Promise((resolve, reject) => {
-        console.log("getItem fire");
-        // TODO: impl
-        resolve();
-      });
+    getItem: async (key: string): Promise<string> => {
+      console.log("getItem fire");
+      return storage.default.get(key);
     },
-    setItem: (key: string, item: string): Promise<void> => {
-      return new Promise((resolve, reject) => {
-        console.log("setItem fire");
-        // TODO: impl
-        resolve();
-      });
+    setItem: async (key: string, item: string): Promise<void> => {
+      storage.default.set(key, item);
     },
-    removeItem: (key: string): Promise<void> => {
-      console.log("removeItem fire");
-      return new Promise((resolve, reject) => {
-        // TODO: impl
-        resolve();
-      });
+    removeItem: async (key: string): Promise<void> => {
+      storage.default.delete(key);
     },
   };
 }
