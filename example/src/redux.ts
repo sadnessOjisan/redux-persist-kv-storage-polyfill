@@ -20,6 +20,7 @@ const initialState: State = {
 };
 
 const reducer = (state: State = initialState, action: ActionType) => {
+  console.log(action);
   switch (action.type) {
     case TOGGLE_ACTION_TYPE:
       return {
