@@ -1,25 +1,17 @@
-export default function createWebStorage(type: string) {
+// import { storage } from "std:kv-storage";
+import { StorageArea } from "kv-storage-polyfill";
+const storage = new StorageArea("kv");
+
+export default function createWebStorage() {
   return {
-    getItem: (key: string): Promise<string> => {
-      return new Promise((resolve, reject) => {
-        console.log("getItem fire");
-        // TODO: impl
-        resolve();
-      });
+    getItem: async (key: string): Promise<string> => {
+      return await storage.get(key);
     },
-    setItem: (key: string, item: string): Promise<void> => {
-      return new Promise((resolve, reject) => {
-        console.log("setItem fire");
-        // TODO: impl
-        resolve();
-      });
+    setItem: async (key: string, item: string): Promise<void> => {
+      await storage.set(key, item);
     },
-    removeItem: (key: string): Promise<void> => {
-      console.log("removeItem fire");
-      return new Promise((resolve, reject) => {
-        // TODO: impl
-        resolve();
-      });
+    removeItem: async (key: string): Promise<void> => {
+      await storage.delete(key);
     },
   };
 }

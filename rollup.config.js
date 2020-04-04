@@ -7,5 +7,8 @@ module.exports = {
     file: "dist/index.js",
     format: "cjs",
   },
-  plugins: [terser(), typescript()],
+  plugins: [
+    // terser(),
+    typescript(),
+  ],
 };
