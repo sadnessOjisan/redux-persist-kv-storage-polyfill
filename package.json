@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
+    "build:example": "rollup -c rollup.examle.config.js",
     "lint:ci": "eslint 'src/**/*.{js,ts}'",
     "lint": "eslint --fix 'src/**/*.{js,ts}'",
     "format": "prettier --write 'src/**/*.{js,ts}'",
@@ -30,6 +31,7 @@
     "jest": "^25.2.7",
     "prettier": "^2.0.2",
     "rollup": "^2.3.2",
+    "rollup-plugin-serve": "^1.0.1",
     "rollup-plugin-terser": "^5.3.0",
     "rollup-plugin-typescript": "^1.0.1",
     "ts-jest": "^25.3.1",
