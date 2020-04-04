@@ -1,6 +1,8 @@
 import { createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
-import createWebStorage from "../../dist/index";
+// for development
+// import createWebStorage from "../../dist/index";
+import createWebStorage from "redux-persist-kv-storage-polyfill";
 
 const TOGGLE_ACTION_TYPE = "TOGGLE_ACTION_TYPE" as const;
 
