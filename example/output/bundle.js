@@ -10,6 +10,10 @@
   /*#__PURE__*/
   React__default.createContext(null);
 
+  {
+    ReactReduxContext.displayName = 'ReactRedux';
+  }
+
   // Default to a dummy "batch" implementation that just runs the callback
   function defaultNoopBatch(callback) {
     callback();
@@ -179,6 +183,18 @@
     return React__default.createElement(Context.Provider, {
       value: contextValue
     }, children);
+  }
+
+  {
+    Provider.propTypes = {
+      store: PropTypes.shape({
+        subscribe: PropTypes.func.isRequired,
+        dispatch: PropTypes.func.isRequired,
+        getState: PropTypes.func.isRequired
+      }),
+      context: PropTypes.object,
+      children: PropTypes.any
+    };
   }
 
   // To get around it, we can conditionally useEffect on the server (no-op) and
@@ -535,6 +551,40 @@
   }
 
   /**
+   * Prints a warning in the console if it exists.
+   *
+   * @param {String} message The warning message.
+   * @returns {void}
+   */
+  function warning(message) {
+    /* eslint-disable no-console */
+    if (typeof console !== 'undefined' && typeof console.error === 'function') {
+      console.error(message);
+    }
+    /* eslint-enable no-console */
+
+
+    try {
+      // This error was thrown as a convenience so that if you enable
+      // "break on all exceptions" in your console,
+      // it would pause the execution at this line.
+      throw new Error(message);
+    } catch (e) {} // eslint-disable-line no-empty
+
+  }
+
+  /*
+   * This is a dummy function to check if the function name has been altered by minification.
+   * If the function has been minified and NODE_ENV !== 'production', warn the user.
+   */
+
+  function isCrushed() {}
+
+  if ( typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
+    warning('You are currently using minified code outside of NODE_ENV === "production". ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or setting mode to production in webpack (https://webpack.js.org/concepts/mode/) ' + 'to ensure you have the correct code for your production build.');
+  }
+
+  /**
    * A hook to access the value of the `ReactReduxContext`. This is a low-level
    * hook that you should usually not need to call directly.
    *
@@ -553,6 +603,10 @@
 
   function useReduxContext() {
     var contextValue = React.useContext(ReactReduxContext);
+
+    if ( !contextValue) {
+      throw new Error('could not find react-redux context value; please ensure the component is wrapped in a <Provider>');
+    }
 
     return contextValue;
   }
@@ -729,6 +783,10 @@
     return function useSelector(selector, equalityFn) {
       if (equalityFn === void 0) {
         equalityFn = refEquality;
+      }
+
+      if ( !selector) {
+        throw new Error("You must pass a selector to useSelectors");
       }
 
       var _useReduxContext = useReduxContext$1(),
