@@ -5356,6 +5356,22 @@ realpath-native@^2.0.0:
   resolved "https://registry.yarnpkg.com/realpath-native/-/realpath-native-2.0.0.tgz#7377ac429b6e1fd599dc38d08ed942d0d7beb866"
   integrity sha512-v1SEYUOXXdbBZK8ZuNgO4TBjamPsiSgcFr0aP+tEKpQZK8vooEUqV6nm6Cv502mX4NF2EfsnVqtNAHG+/6Ur1Q==
 
+redux-persist-kv-storage-polyfill@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/redux-persist-kv-storage-polyfill/-/redux-persist-kv-storage-polyfill-0.0.1.tgz#9855afa0a6745ca26305b8966611585433be8c2a"
+  integrity sha512-PteIEqCwXvEZWRr0zc60AhDlakSEAqMlwa+GdLTnPXewYzq3BlPnCXA3M/7cH7N+IJNh+5UlPvTNzp6HAUkHJQ==
+  dependencies:
+    html-webpack-plugin "^4.0.4"
+    kv-storage-polyfill "^2.0.0"
+    react "^16.13.1"
+    react-dom "^16.13.1"
+    react-redux "^7.2.0"
+    redux "^4.0.5"
+    ts-loader "^6.2.2"
+    webpack "^4.42.1"
+    webpack-cli "^3.3.11"
+    webpack-dev-server "^3.10.3"
+
 redux-persist@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-6.0.0.tgz#b4d2972f9859597c130d40d4b146fecdab51b3a8"

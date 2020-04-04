@@ -1,7 +1,7 @@
 {
   "name": "redux-persist-kv-storage-polyfill",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Redux Persist adapter for kv storage",
   "main": "dist/index.js",
   "scripts": {
     "test": "jest",
@@ -36,6 +36,7 @@
     "jest": "^25.2.7",
     "prettier": "^2.0.2",
     "redux-persist": "^6.0.0",
+    "redux-persist-kv-storage-polyfill": "^0.0.1",
     "rollup": "^2.3.2",
     "rollup-plugin-terser": "^5.3.0",
     "rollup-plugin-typescript": "^1.0.1",
@@ -53,5 +54,8 @@
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "files": [
+    "dist/"
+  ]
 }
