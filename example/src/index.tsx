@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 import { Provider, useSelector, useDispatch } from "react-redux";
-import { configureStore, State } from "./redux";
+import { configureStore, State, toggle } from "./redux";
 
 const store = configureStore();
 
@@ -13,7 +13,13 @@ const Root = () => {
     <div
       style={{ display: "flex", alignItems: "center", flexDirection: "column" }}
     >
-      <button>toggle!</button>
+      <button
+        onClick={() => {
+          dipatch(toggle());
+        }}
+      >
+        toggle!
+      </button>
       <div>now state is ... {state.flg ? "ON" : "OFF"}</div>
     </div>
   );

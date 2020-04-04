@@ -2,7 +2,7 @@ import { createStore } from "redux";
 
 const TOGGLE_ACTION_TYPE = "TOGGLE_ACTION_TYPE" as const;
 
-const toggle = () => {
+export const toggle = () => {
   return {
     type: TOGGLE_ACTION_TYPE,
   };

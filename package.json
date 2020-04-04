@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "build": "rollup -c",
-    "build:example": "rollup -c rollup.examle.config.js",
+    "build:example": "webpack",
+    "serve:example": "webpack-dev-server",
     "lint:ci": "eslint 'src/**/*.{js,ts}'",
     "lint": "eslint --fix 'src/**/*.{js,ts}'",
     "format": "prettier --write 'src/**/*.{js,ts}'",
@@ -41,10 +42,15 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "html-webpack-plugin": "^4.0.4",
     "kv-storage-polyfill": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "ts-loader": "^6.2.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   }
 }
