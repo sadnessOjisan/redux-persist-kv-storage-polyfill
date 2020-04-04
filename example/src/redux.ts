@@ -1,6 +1,7 @@
 import { createStore } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import createWebStorage from "../../dist/index";
+
 const TOGGLE_ACTION_TYPE = "TOGGLE_ACTION_TYPE" as const;
 
 export const toggle = () => {
@@ -20,7 +21,6 @@ const initialState: State = {
 };
 
 const reducer = (state: State = initialState, action: ActionType) => {
-  console.log(action);
   switch (action.type) {
     case TOGGLE_ACTION_TYPE:
       return {
